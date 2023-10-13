@@ -1,6 +1,25 @@
 function hasTargetSum(array, target) {
   // Write your algorithm here
-}
+  const numbersSeen = {}; // Initialize an empty object to keep track of seen numbers
+
+  for (let num of array) {
+    const neededNumber = target - num; // Calculate the needed number to reach the target
+
+    if (numbersSeen[neededNumber]) {
+      return true; // Found a pair that adds up to the target
+    }
+
+    numbersSeen[num] = true; // Add the current number to numbersSeen
+  }
+
+  return false; // No pair of numbers adds up to the target
+}  
+  // Test cases
+  console.log(hasTargetSum([3, 8, 12, 4, 11, 7], 10)); // true
+  console.log(hasTargetSum([22, 19, 4, 6, 30], 25)); // true
+  console.log(hasTargetSum([1, 2, 5], 4)); // false
+  
+
 
 /* 
   Write the Big O time complexity of your function here
@@ -8,6 +27,14 @@ function hasTargetSum(array, target) {
 
 /* 
   Add your pseudocode here
+  Function hasTargetSum(array, target):
+    Initialize an empty object numbersSeen
+    For each num in array:
+        Calculate neededNumber = target - num
+        If numbersSeen[neededNumber] exists:
+            Return true
+        Add num to numbersSeen with value true
+    Return false
 */
 
 /*
